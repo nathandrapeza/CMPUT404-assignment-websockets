@@ -155,10 +155,11 @@ def flask_post_json():
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
     '''update the entities via this interface'''
-    data = flask_post_json()
-    myWorld.set(entity, data)
-    new_entity = myWorld.get(entity)
-    return json.dumps(new_entity)
+    if request.method == "POST" or request.method == "PUT":
+        data = flask_post_json()
+        myWorld.set(entity, data)
+        new_entity = myWorld.get(entity)
+        return json.dumps(new_entity)
 
 @app.route("/world", methods=['POST','GET'])    
 def world():
@@ -175,6 +176,8 @@ def get_entity(entity):
 def clear():
     '''Clear the world out!'''
     myWorld.clear()
+    return json.dumps(myWorld.space)
+
 
 
 

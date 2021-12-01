@@ -258,7 +258,13 @@ function update() {
     drawFrame();
 }
 
-
+/*
+Used code from https://github.com/uofa-cmput404/cmput404-slides/blob/master/examples/WebSocketsExamples/static/chat.html
+Authors: Abram Hindle / Hazel Victoria Campbell
+Author Github: https://github.com/abramhindle
+Author Github: https://github.com/hazelybell
+License: Apache 2 licensed
+*/
 function wsSetup() {
     var url = "ws://"+host+"/subscribe";   
     socket = new WebSocket(url);
