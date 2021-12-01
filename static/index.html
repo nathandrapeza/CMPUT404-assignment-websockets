@@ -45,16 +45,25 @@ debug("Test");
 world = {};
 
 //XXX: TODO Make this prettier!
+/*
+Source: my assignment 4 (ajax) code,
+Source github: https://github.com/nathandrapeza/CMPUT404-assignment-ajax/blob/master/static/index.html
+Original source (for js): https://www.w3schools.com/tags/canvas_shadowcolor.asp, for shadowBlur/shadowColor
+*/
 function drawCircle(context,entity) {
     with(context) {
-        beginPath();                
-        lineWidth = 3;
+        beginPath();              
+        lineWidth = 8;
         var x = entity["x"];
         var y = entity["y"];
-        //moveTo(x,y);
+        
         fillStyle = entity["colour"];
+    
         strokeStyle = fillStyle;
-        arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
+        arc(x, y, (entity["radius"])?entity["radius"]:0, 0, 2.0 * Math.PI, false);
+        fill();
+        shadowBlur = 5;
+        shadowColor = "yellow";
         stroke();                                
     }
 }
@@ -230,16 +239,17 @@ mouse = (function() {
 
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
+// Source: colours from my A4 ajax assignment
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'#16F7B8'});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'#2FFA84'});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
+    addEntityWithoutName({'x':x,'y':y,'colour':'#16F7B8',
                           'radius':10});
 });
 
